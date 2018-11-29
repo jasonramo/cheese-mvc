@@ -5,15 +5,18 @@
     <h1 th:text="${title}">Default Title</h1>  <!-- Thymeleaf syntax in the h1 -->
 
     <nav th:replace="fragments :: navigation"></nav>
+    <br />
+    <p th:unless="${cheeses} and ${cheeses.size()}" >No Cheese To Display</p>
 
-    <p th:unless="${cheeses} and ${cheeses.size()}" >No Cheese :(</p>
-
-    <ul>
-        <div th:each="cheese : ${cheeses}">
-            <span th:text="${cheese.key}"></span>
-            <span> : </span>
-            <span th:text="${cheese.value}"></span>
-        </div>
-    </ul>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        <tr th:each="cheese : ${cheeses}">
+            <td th:text="${cheese.name}"></td>
+            <td th:text="${cheese.description}"></td>
+        </tr>
+    </table>
 </body>
 </html>
